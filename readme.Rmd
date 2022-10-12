@@ -8,22 +8,25 @@ date: "2022-10-12"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Description of the project:
+-In this project, we will analyze a dataset covering the extent of coral bleaching, and the factors that affect it. A majority of this dataset was taken during the 2015-2017 El Nino period in which increased thermal stress was linked to coral bleaching. However, the data time range spans farther than that (check information about the data section for more details).
+- When water is too warm, corals expel the algae (zooxanthellae) living in their tissues causing the coral to turn completely white. This phenomenon is called coral bleaching. Corals can survive a bleaching event, but they are under more stress and are subject to mortality.
+- The leading cause of coral bleaching is climate change. A warming planet means a warming ocean, and a change in water temperature—as little as 2 degrees Fahrenheit—can cause coral to drive out algae. Coral may bleach for other reasons, like extremely low tides, pollution, or too much sunlight.
+Coral reefs protect coastlines from storms and erosion, provide jobs for local communities, and offer opportunities for recreation. They are also a source of food 
+and medicines. Over half a billion people depend on reefs for food, income, and protection.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
-```
+Goals:
+- Examine the relationship between coral bleaching, geographic location, and environmental factors such as sea surface temperature (SST), sea surface temperature anomalies (SSTA), and tropical southern atlantic index (TSA).
+- Produce data visualizations that display the relationship between these variables.
+- Use coral bleaching data to create a model that predicts coral bleaching in a specified area (measured through average bleaching percent). 
+- Educate our audience on the prevalence and causes of coral bleaching around the world.
 
-## Including Plots
 
-You can also embed plots, for example:
+Information about the data:
+- The following data contains information about bleaching and environmental data for global coral reef sites from 1980-2020. It was provided by the Biological and Chemical Oceanography Data Management Office. Within the data set we get info such as location, depth, average bleaching, temperature, sea surface temperature anomaly, thermal stress anomaly, and other parameters. The data is an accumulation of data from seven sources and was processed using Microsoft Access 2019, R, and QGIS. There are only a few data points before 1998 and most of the data was collected between 2015 and 2016. 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Reference - van Woesik, R., Burkepile, D. (2019) Bleaching and environmental data for global coral reef sites from 1998-2017. Biological and Chemical Oceanography Data Management Office (BCO-DMO). (Version 1) Version Date 2019-07-18 [if applicable, indicate subset used]. doi:10.1575/1912/bco-dmo.773466.1 [access date]
+
