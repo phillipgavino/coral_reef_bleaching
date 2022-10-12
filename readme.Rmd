@@ -1,17 +1,13 @@
----
-title: "readme"
-output: html_document
-date: "2022-10-12"
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
+Link to data: https://www.bco-dmo.org/dataset/773466
 
 
 Description of the project:
 -In this project, we will analyze a dataset covering the extent of coral bleaching, and the factors that affect it. A majority of this dataset was taken during the 2015-2017 El Nino period in which increased thermal stress was linked to coral bleaching. However, the data time range spans farther than that (check information about the data section for more details).
+
 - When water is too warm, corals expel the algae (zooxanthellae) living in their tissues causing the coral to turn completely white. This phenomenon is called coral bleaching. Corals can survive a bleaching event, but they are under more stress and are subject to mortality.
+
 - The leading cause of coral bleaching is climate change. A warming planet means a warming ocean, and a change in water temperature—as little as 2 degrees Fahrenheit—can cause coral to drive out algae. Coral may bleach for other reasons, like extremely low tides, pollution, or too much sunlight.
 Coral reefs protect coastlines from storms and erosion, provide jobs for local communities, and offer opportunities for recreation. They are also a source of food 
 and medicines. Over half a billion people depend on reefs for food, income, and protection
@@ -19,8 +15,11 @@ and medicines. Over half a billion people depend on reefs for food, income, and 
 
 Goals:
 - Examine the relationship between coral bleaching, geographic location, and environmental factors such as sea surface temperature (SST), sea surface temperature anomalies (SSTA), and tropical southern atlantic index (TSA).
+
 - Produce data visualizations that display the relationship between these variables.
+
 - Use coral bleaching data to create a model that predicts coral bleaching in a specified area (measured through average bleaching percent). 
+
 - Educate our audience on the prevalence and causes of coral bleaching around the world.
 
 

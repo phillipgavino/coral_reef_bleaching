@@ -1,18 +1,14 @@
 ---
 title: "Coral Reef Bleaching"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 date: "2022-09-29"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r}
 library(tidyverse)
@@ -76,9 +72,6 @@ ggplot(df) + geom_raster(aes(x = longitude, y = latitude, fill=ClimSST), interpo
 df2 <- df %>% group_by(City_Town) %>% filter(substr(Date2, 1, 4)=="2016") %>% summarize(Mean_Average_Bleaching = sum(as.double(Average_Bleaching)))
 df2
 ```
-```{r}
-df2 %>% ggplot
-```
 
 
 ```{r}
@@ -87,37 +80,28 @@ df
 ```
 
 ```{r}
-num_ble <- as.numeric(df$Average_Bleaching)
-city_town_vect <- df$City_Town
-
-tot_inc_ble <- c()
-
-for (i in 2:length(num_ble)-1) {
-  if (city_town_vect[i]==city_town_vect[i+1] & !is.na(city_town_vect[i]) & !is.na(city_town_vect[i+1])) {
-     tot_inc_ble <- c(tot_inc_ble, num_ble[i] + num_ble[i+1])
-  }
-  else {
-    tot_inc_ble <- c(tot_inc_ble, num_ble[i])
-  }
-}
-
-df$Compound_Average_Bleaching <- tot_inc_ble
-df %>% filter(City_Town == "Magnetic Island")
+# num_ble <- as.numeric(df$Average_Bleaching)
+# city_town_vect <- df$City_Town
+# 
+# tot_inc_ble <- c()
+# 
+# for (i in 2:length(num_ble)-1) {
+#   if (city_town_vect[i]==city_town_vect[i+1] & !is.na(city_town_vect[i]) & !is.na(city_town_vect[i+1])) {
+#      tot_inc_ble <- c(tot_inc_ble, num_ble[i] + num_ble[i+1])
+#   }
+#   else {
+#     tot_inc_ble <- c(tot_inc_ble, num_ble[i])
+#   }
+# }
+# 
+# df$Compound_Average_Bleaching <- tot_inc_ble
+# df %>% filter(City_Town == "Magnetic Island")
 
 ```
 
 
 ```{r}
-df %>% filter(City_Town=="Magnetic Island") %>% ggplot(aes(Date2, Compound_Average_Bleaching)) + geom_point() + theme(legend.position = "none")
+# df %>% filter(City_Town=="Magnetic Island") %>% ggplot(aes(Date2, Compound_Average_Bleaching)) + geom_point() + theme(legend.position = "none")
 
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
