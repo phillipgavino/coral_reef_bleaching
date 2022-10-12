@@ -14,7 +14,7 @@ Description of the project:
 - When water is too warm, corals expel the algae (zooxanthellae) living in their tissues causing the coral to turn completely white. This phenomenon is called coral bleaching. Corals can survive a bleaching event, but they are under more stress and are subject to mortality.
 - The leading cause of coral bleaching is climate change. A warming planet means a warming ocean, and a change in water temperature—as little as 2 degrees Fahrenheit—can cause coral to drive out algae. Coral may bleach for other reasons, like extremely low tides, pollution, or too much sunlight.
 Coral reefs protect coastlines from storms and erosion, provide jobs for local communities, and offer opportunities for recreation. They are also a source of food 
-and medicines. Over half a billion people depend on reefs for food, income, and protection.
+and medicines. Over half a billion people depend on reefs for food, income, and protection
 
 
 Goals:
