@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 
 Link to data: https://www.bco-dmo.org/dataset/773466
