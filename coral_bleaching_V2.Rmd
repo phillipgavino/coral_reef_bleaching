@@ -93,6 +93,18 @@ for (i in rand_uni) {
 library(scales)
 library(readr)
 
+eq1 <- function(x,y) {
+  m <- lm(y ~ x)
+  summary(m)$r.squared
+  # as.character(
+  #   as.expression(
+  #     substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2,
+  #               list(a = format(coef(m)[1], digits = 4),
+  #               b = format(coef(m)[2], digits = 4),
+  #               r2 = format(summary(m)$r.squared, digits = 3)))
+  #  )
+  # )
+}
 
 #cleaning the graph
 update_bleach <- df %>% 
@@ -118,7 +130,11 @@ update_bleach %>%
   geom_point() +
   geom_smooth(method="lm",color="black") + 
   scale_x_continuous(n.break=6) +
-  facet_wrap(~Realm_Name)
+  facet_wrap(~Realm_Name) +
+  theme(legend.position = "none") +
+  xlab("Temperature (K)") +
+  ylab("Bleaching Percent (%)")
+eq1(update_bleach$Temperature_Kelvin, update_bleach$Percent_Bleaching)
 
 #Turbidity | Realm facet wrapped (2)
 update_bleach %>%
@@ -126,7 +142,11 @@ update_bleach %>%
   geom_point() +
   geom_smooth(method="lm",color="black") + 
   scale_x_continuous(n.break=6) +
-  facet_wrap(~Realm_Name)
+  facet_wrap(~Realm_Name) +
+  theme(legend.position = "none") +
+  xlab("Turbidity (1/m)") +
+  ylab("Bleaching Percent (%)")
+eq1(update_bleach$Turbidity, update_bleach$Percent_Bleaching)
 
 #Cyclone Frequency | Realm Facet Wrapped (3)
 update_bleach %>%
@@ -134,7 +154,11 @@ update_bleach %>%
   geom_point() +
   geom_smooth(method="lm",color="black") + 
   scale_x_continuous(n.break=6) +
-  facet_wrap(~Realm_Name)
+  facet_wrap(~Realm_Name) +
+  theme(legend.position = "none") +
+  xlab("Cyclone Frequency") +
+  ylab("Bleaching Percent (%)")
+eq1(update_bleach$Cyclone_Frequency, update_bleach$Percent_Bleaching)
 
 #Distance to Shore | Realm Facet Wrapped (4)
 update_bleach %>%
@@ -142,7 +166,13 @@ update_bleach %>%
   geom_point() +
   geom_smooth(method="lm",color="black") + 
   scale_x_continuous(n.break=3) +
-  facet_wrap(~Realm_Name)
+  facet_wrap(~Realm_Name) +
+  theme(legend.position = "none") +
+  xlab("Distance to Shore (m)") +
+  ylab("Bleaching Percent (%)")
+eq1(update_bleach$Distance_to_Shore, update_bleach$Percent_Bleaching)
+
+
 ```
 
 ```{R}
@@ -274,12 +304,17 @@ ggplot(df, aes(x=Turbidity, y=Percent_Bleaching)) +
 df_cor <- df %>% select(Percent_Bleaching, Distance_to_Shore,
                         Cyclone_Frequency, Depth_m, Temperature_Kelvin,
                         Windspeed, SSTA, TSA, ClimSST, Turbidity)
+``` 
 
+```{R}
 df_cor %>% na.omit() %>% select_if(is.numeric) %>% cor %>%
   as.data.frame %>% rownames_to_column %>% pivot_longer(-1) %>%
-  ggplot(aes(rowname, name, fill=value)) + geom_tile() + 
-  geom_text(aes(label=round(value,2)), size=3.3) +
+  ggplot(aes(rowname, name, fill=value)) + geom_tile(color="white") + 
+  geom_text(aes(label=round(value,2)), size=3.3, color="white") +
   theme(text = element_text(size=10), axis.text.x = element_text(angle=90, hjust=1)) +
   labs(x = '', y = '', title = 'Correlation Matrix') +
   coord_fixed()
 ```
+Percent Bleaching, is positively correlated with Depth_m, TSA, Temperature_Kelvin, SSTA, Cyclone_Frequency, Windspeed and Distance_to_Shore in this order (i.e. Depth_m is maximum and Distance_to_Shore is minimum).
+
+Percent Bleaching is negatively correlated with Turbidity and ClimSST (Turbidity is negatively maximum and ClimSST is negatively minimum).
